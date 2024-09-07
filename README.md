@@ -9,3 +9,12 @@ docker run -d --restart=unless-stopped \
   -p 6789:6789 \
   fangqk1991/puppeteer-api
 ```
+
+### 访问 Swagger 文档
+* <http://localhost:6789/api-docs/v1/puppeteer>
+
+### 执行示例代码
+
+```
+curl -X POST 'http://localhost:6789/api/v1/puppeteer/example'
+```
