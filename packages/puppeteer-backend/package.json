@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "sso-backend",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "concurrently --raw 'pnpm start:typecheck' 'pnpm open:compile'",
+    "open:compile": "ts-node-dev --no-notify --ignore-watch node_modules src/apps/puppeteer-open.ts",
+    "start:typecheck": "tsc -w --noEmit",
+    "build": "rm -rf dist && webpack --config ./webpack.config.js",
+    "test": "nyc mocha --exit"
+  },
+  "dependencies": {
+    "puppeteer": "^23.2.2"
+  }
+}
