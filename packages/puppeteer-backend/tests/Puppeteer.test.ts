@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer'
 import { sleep } from '@fangcha/tools'
+import { PuppeteerHelper } from '../src/services/PuppeteerHelper'
 
 describe('Test Puppeteer.test.ts', () => {
   it(`example`, async () => {
@@ -18,5 +19,15 @@ describe('Test Puppeteer.test.ts', () => {
     console.info(await page.cookies('https://xueqiu.com'))
 
     await browser.close()
+  })
+
+  it(`PuppeteerHelper.executeCode`, async () => {
+    const response = await PuppeteerHelper.executeCode(`
+      const page = await browser.newPage()
+      await page.goto('https://xueqiu.com/S/SZ161125')
+      await sleep(1000)
+      return await page.cookies('https://xueqiu.com')
+    `)
+    console.info(response)
   })
 })

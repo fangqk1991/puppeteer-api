@@ -29,14 +29,14 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0
       '@fangcha/router':
-        specifier: ^0.33.0
-        version: 0.33.0(@fangcha/backend-kit@0.70.0)
+        specifier: ^0.35.0
+        version: 0.35.0(@fangcha/backend-kit@0.70.0)
       '@fangcha/session':
         specifier: ^0.5.0
-        version: 0.5.0(@fangcha/router@0.33.0)(@fangcha/tools@1.42.0)
+        version: 0.5.0(@fangcha/router@0.35.0)(@fangcha/tools@1.42.0)
       '@fangcha/swagger':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.4.0
+        version: 0.4.0
       '@fangcha/tools':
         specifier: ^1.42.0
         version: 1.42.0
@@ -1550,14 +1550,14 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /@fangcha/router@0.33.0(@fangcha/backend-kit@0.70.0):
-    resolution: {integrity: sha512-UzannQ4LT1OyH1vKxfXngv8Mx34VhjzO/ywgdyluH0N/5Yppaj/lIj9kXTDt6r7mNhHkj6d3y4oJvvBYBV9d5Q==}
+  /@fangcha/router@0.35.0(@fangcha/backend-kit@0.70.0):
+    resolution: {integrity: sha512-qZzXUCs/V65Ug1JH2APX2GhJke51p2w7ac9JeXBR9I5gUJyTUUS1FElX7mrKu3y/a/X4yvUfq4wmPNRPWJeIsQ==}
     peerDependencies:
       '@fangcha/backend-kit': '*'
     dependencies:
       '@fangcha/app-error': 1.6.0
       '@fangcha/backend-kit': 0.70.0(@fangcha/app-request-extensions@0.6.0)(@fangcha/app-request@1.11.0)
-      '@fangcha/swagger': 0.2.0
+      '@fangcha/swagger': 0.4.0
       '@fangcha/tools': 1.42.0
       '@koa/router': 12.0.1
       '@types/jsonwebtoken': 9.0.6
@@ -1571,18 +1571,18 @@ packages:
       - supports-color
     dev: false
 
-  /@fangcha/session@0.5.0(@fangcha/router@0.33.0)(@fangcha/tools@1.42.0):
+  /@fangcha/session@0.5.0(@fangcha/router@0.35.0)(@fangcha/tools@1.42.0):
     resolution: {integrity: sha512-3zgp44PLizymkbFE3Fu7Ht5h+tzBuycRIE9twOEJSbi15QbeHOTRA0feBS7ITsikJGmxG/F+ms+76DL1O1cRKA==}
     peerDependencies:
       '@fangcha/router': '*'
       '@fangcha/tools': '*'
     dependencies:
-      '@fangcha/router': 0.33.0(@fangcha/backend-kit@0.70.0)
+      '@fangcha/router': 0.35.0(@fangcha/backend-kit@0.70.0)
       '@fangcha/tools': 1.42.0
     dev: false
 
-  /@fangcha/swagger@0.2.0:
-    resolution: {integrity: sha512-F4Ft9oK2jXugyx4YeEj4l899XuUVRRSmTqZ/p8DhyC4mokWDyyBIGuoKCt1ebdMw1Aq0v76WPfqPsk+rzgIDsw==}
+  /@fangcha/swagger@0.4.0:
+    resolution: {integrity: sha512-JHdv/0XfOUedRWizzH6898Euhn+Qpp8hbR6NWDLOBX8/QJy8/CYCfxbV0+cUxwBTJzW5FV3U6HLjSKOpLMt1zQ==}
     dev: false
 
   /@fangcha/tools@1.42.0:

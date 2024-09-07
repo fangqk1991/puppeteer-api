@@ -18,3 +18,15 @@ docker run -d --restart=unless-stopped \
 ```
 curl -X POST 'http://localhost:6789/api/v1/puppeteer/example'
 ```
+
+### 执行自定义代码
+
+```
+curl -X 'POST' \
+  'http://localhost:6789/api/v1/puppeteer/execute' \
+  -H 'Content-Type: text/plain' \
+  -d 'const page = await browser.newPage();
+await page.goto("https://xueqiu.com/S/SZ161125");
+await sleep(1000);
+return page.cookies("https://xueqiu.com");'
+```
