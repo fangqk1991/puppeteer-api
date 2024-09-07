@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "sso-backend",
+  "name": "puppeteer-backend",
   "version": "1.0.0",
   "license": "UNLICENSED",
   "scripts": {
