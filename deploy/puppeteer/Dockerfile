@@ -1,5 +1,5 @@
 ########################################
-FROM node:19-alpine AS FILES_CACHE
+FROM --platform=$TARGETPLATFORM node:19-alpine AS FILES_CACHE
 
 WORKDIR /data/source-files
 COPY . .
@@ -19,7 +19,7 @@ RUN node ./deploy/deps/purify-package-json.js /data/meta-files
 ########################################
 # 准备仅包含 package.json 和 pnpm-lock.yaml 的最小构建依赖文件
 # package.json 以外的文件修改将不会影响缓存命中
-FROM node:19-alpine AS MODULES_CACHE
+FROM --platform=$TARGETPLATFORM node:19-alpine AS MODULES_CACHE
 
 ARG BUILD_DIR=/data/build
 
@@ -42,7 +42,7 @@ RUN rm -rf ./node_modules/ && pnpm install -r --prod
 
 ########################################
 # 最终镜像，仅复制可执行的程序文件和准备必要的系统服务（nginx、curl）
-FROM node:19-alpine
+FROM --platform=$TARGETPLATFORM node:19-alpine
 
 # 其他项目若将本语句置于最前方，可共享缓存命中
 RUN yarn global add pm2 && pm2 install pm2-logrotate
