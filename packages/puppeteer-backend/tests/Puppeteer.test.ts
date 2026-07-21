@@ -16,7 +16,7 @@ describe('Test Puppeteer.test.ts', () => {
     const response = await PuppeteerHelper.executeCode({
       code: `
       const page = await browser.newPage()
-      injectProxy(page)
+      await injectProxy(page)
       await page.goto('https://ifconfig.co/json')
       await sleep(1000)
       const content = await page.content()
