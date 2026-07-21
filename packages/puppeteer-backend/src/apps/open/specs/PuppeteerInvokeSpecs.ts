@@ -49,7 +49,9 @@ factory.prepare(PuppeteerInvokeApis.Example, async (ctx) => {
 
 factory.prepare(PuppeteerInvokeApis.CodeExecute, async (ctx) => {
   const bodyText = ctx.request.body
-  ctx.body = await PuppeteerHelper.executeCode(bodyText)
+  ctx.body = await PuppeteerHelper.executeCode({
+    code: bodyText,
+  })
 })
 
 export const PuppeteerInvokeSpecs = factory.buildSpecs()
