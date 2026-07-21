@@ -2,7 +2,7 @@ import { SpecFactory } from '@fangcha/router'
 import puppeteer from 'puppeteer'
 import { sleep } from '@fangcha/tools'
 import { PuppeteerHelper } from '../../../services/PuppeteerHelper'
-import { Api } from '@fangcha/swagger'
+import { Api, buildSwaggerSchema } from '@fangcha/swagger'
 
 const PuppeteerInvokeApis = {
   Example: {
@@ -31,6 +31,30 @@ return page.cookies("https://xueqiu.com");`,
       },
     ],
   } as Api,
+  FullExecute: {
+    method: 'POST',
+    route: '/api/v1/puppeteer/full-execute',
+    description: '传递代码并执行',
+    parameters: [
+      {
+        name: 'bodyData',
+        type: 'object',
+        in: 'body',
+        description: '可执行代码',
+        schema: buildSwaggerSchema({
+          code: `
+      const page = await browser.newPage()
+      injectProxy(page)
+      await page.goto('https://ifconfig.co/json')
+      await sleep(1000)
+      const content = await page.content()
+      return content
+`,
+          proxy: '127.0.0.1:6152',
+        }),
+      },
+    ],
+  } as Api,
 }
 
 const factory = new SpecFactory('执行代码')
@@ -51,6 +75,14 @@ factory.prepare(PuppeteerInvokeApis.CodeExecute, async (ctx) => {
   const bodyText = ctx.request.body
   ctx.body = await PuppeteerHelper.executeCode({
     code: bodyText,
+  })
+})
+
+factory.prepare(PuppeteerInvokeApis.FullExecute, async (ctx) => {
+  const { code, proxy } = ctx.request.body
+  ctx.body = await PuppeteerHelper.executeCode({
+    code: code,
+    proxy: proxy,
   })
 })
 
